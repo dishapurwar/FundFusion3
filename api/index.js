@@ -760,4 +760,4 @@ app.delete("/deleteReminder/:id", async (req, res) => {
 app.get("/admin/admins", getAdmins);
 app.post("/admin/add", addAdmins);
 
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
