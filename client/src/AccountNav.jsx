@@ -28,11 +28,11 @@ export default function AccountNav() {
              My Profile
       </Link>
       <Link className={linkClasses('participated')} to={'/account/participated'}>
-        Participated Events
+        Interested startups
       </Link>
       {isAdmin && (
         <Link className={linkClasses('hosted')} to={'/account/hosted'}>
-          Hosted Events
+          All startups
         </Link>
       )}
     </nav>

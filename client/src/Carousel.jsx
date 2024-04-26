@@ -8,34 +8,28 @@ const Carousel = () => {
 
     const slidesData = [
         {
-            name: 'ffortisimo',
-            description: 'The Music Society of JIIT 128.',
-            imageUrl: 'images/1.jpg',
+            name: 'Social Startups',
+            imageUrl: 'images/so.jpg',
         },
         {
-            name: 'vamunique',
-            description: 'The Western Dance Society of JIIT 128.',
-            imageUrl: 'images/2.jpg',
+            name: 'Small Business Startups ',
+            imageUrl: 'images/small.jpg',
         },
         {
-            name: 'bhangde te sartaaj',
-            description: 'The Bhangra Society of JIIT 128.',
-            imageUrl: 'images/3.jpg',
+            name: 'Buyable Startups',
+            imageUrl: 'images/b.jpg',
         },
         {
-            name: 'abhivyakti',
-            description: 'The Dramatics Society of JIIT 128.',
-            imageUrl: 'images/4.jpg',
+            name: 'Corporate Startups',
+            imageUrl: 'images/corr.jpg',
         },
         {
-            name: 'jiityouthclub',
-            description: 'The Public Relations Society of JIIT 128.',
-            imageUrl: 'images/5.jpg',
+            name: 'Lifestyle Startups',
+            imageUrl: 'images/landingimage.png',
         },
         {
-            name: 'aakriti',
-            description: 'The Fine Arts society of JIIT 128',
-            imageUrl: 'images/6.jpg',
+            name: 'Scalable Startups',
+            imageUrl: 'images/s.jpeg',
         },
     ];
 

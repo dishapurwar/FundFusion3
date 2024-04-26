@@ -7,11 +7,11 @@ export default function Header() {
 
     return (
         <div>
-            <header className="flex justify-between bg-black">
+            <header className="flex justify-between bg-black flex-row-reverse">
                 {/* logo */}
-                <div className="flex items-center gap-1">
+                {/* <div className="flex items-center gap-1">
                     <img src="/images/logo.png" className="w-24 h-auto" alt="" />
-                </div>
+                </div> */}
                 {/* user widget */}
                 <Link
                     to={user ? "/account" : "/login"}
@@ -25,18 +25,18 @@ export default function Header() {
                         >
                             Home
                         </Link>
-                        <Link
-                            to="/merchandise"
+                        { <Link
+                            to="/Startupcontact"
                             className="flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 via-yellow-500 from-purple-500 to-red-500 text-transparent bg-clip-text text-sm font-normal focus:outline-none"
                         >
-                            Merchandise
-                        </Link>
+                            Startup
+                        </Link> }
                         {isAdmin && user && user.userName === "disha" && (
                             <Link
                                 to="/admin/add"
                                 className="flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 via-yellow-500 from-purple-500 to-red-500 text-transparent bg-clip-text text-sm font-normal focus:outline-none"
                             >
-                                Add Admin
+                                Add Startups
                             </Link>
                         )}
                         <Link

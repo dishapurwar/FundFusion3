@@ -15,6 +15,7 @@ const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const path = require("path");
 const EventEmitter = require("events");
+const upload = multer({ dest: 'uploads/' });
 
 require("dotenv").config();
 const app = express();
@@ -299,32 +300,35 @@ app.post("/upload", photosMiddleware.array("photos", 100), async (req, res) => {
   res.json(uploadedFiles);
 });
 
-app.post("/account/hosted", async (req, res) => {
+app.post("/account/hosted", upload.single('pitchDeck'), async (req, res) => {
   const { token } = req.cookies;
   const {
-    title,
-    venue,
+    category,
     addedPhotos,
     description,
-    perks,
-    extraInfo,
-    time,
     date,
+    location,
+    startupName,
   } = req.body;
   jwt.verify(token, jwtSecret, {}, async (err, userData) => {
     if (err) throw err;
-    const Hosteddoc = await Hosted.create({
+    const hostedData = {
       owner: userData.id,
-      title,
-      venue,
+      category,
       photos: addedPhotos,
       description,
-      perks,
-      extraInfo,
-      time,
+      pitchDeck: req.file ? req.file.path : null, // Use the uploaded file path or null if no file uploaded
       date,
-    });
-    res.json(Hosteddoc);
+      location,
+    startupName,
+    };
+    try {
+      const hostedDoc = await Hosted.create(hostedData);
+      res.json(hostedDoc);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Failed to save hosted data.' });
+    }
   });
 });
 
@@ -346,32 +350,29 @@ app.get("/hosted/:id", async (req, res) => {
   res.json(await Hosted.findById(id));
 });
 
-app.put("/account/hosted", async (req, res) => {
+app.put("/account/hosted", upload.single('pitchDeck'), async (req, res) => {
   const { token } = req.cookies;
   const {
     id,
-    title,
-    venue,
+    category,
     addedPhotos,
     description,
-    perks,
-    extraInfo,
-    time,
     date,
+    location,
+    startupName,
   } = req.body;
   jwt.verify(token, jwtSecret, {}, async (err, userData) => {
     if (err) throw err;
     const hostDoc = await Hosted.findById(id);
     if (userData.id === hostDoc.owner.toString()) {
       hostDoc.set({
-        title,
-        venue,
+        category,
         photos: addedPhotos,
         description,
-        perks,
-        extraInfo,
-        time,
+        pitchDeck: req.file ? req.file.path : hostDoc.pitchDeck, // Use the uploaded file path or the existing pitchDeck value
         date,
+        location,
+       startupName,
       });
       await hostDoc.save();
       res.json("ok");

@@ -86,6 +86,7 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx';
 import ResetPasswordPage from './pages/ResetPasswordPage.jsx';
 import MerchandiseApp from './MerchandiseApp.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import Startupcontact from './pages/Startupcontact.jsx';
 import OTPInput from "./pages/OTPInput.jsx";
 import Recovered from "./pages/Recovered.jsx";
 import Reset from "./pages/Reset.jsx";
@@ -131,8 +132,8 @@ function App() {
             <Route path="/admin/list" element={<ListAdmins />} />
             <Route path="/admin/add" element={<AddAdmin />} />
             <Route path="/admin/login" element={<LoginAdmin />} />
-            <Route path="/merchandise/*" element={<MerchandiseApp />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/Startupcontact" element={<Startupcontact />} />
           </Route>
         </Routes>
       </RecoveryContext.Provider>

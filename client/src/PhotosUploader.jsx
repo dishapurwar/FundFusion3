@@ -41,7 +41,7 @@ export default function PhotosUploader({ addedPhotos, onChange }) {
                 <input value={photoLink}
                     className="input-text"
                     onChange={ev => setPhotoLink(ev.target.value)}
-                    type="text" placeholder={"Add using a link....jpg"} />
+                    type="text" placeholder={"Add using a link....jpg"} style={{ width: "calc(50% - 20px)" }} />
                 <button onClick={addPhotoByLink} className="bg-gray-200 px-4 rounded-2xl">Add&nbsp; photo</button>
             </div>
             <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
